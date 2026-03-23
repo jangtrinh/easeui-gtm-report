@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EaseUI — GTM Plan</title>
+<link rel="stylesheet" href="shared.css">
+<script src="https://unpkg.com/@phosphor-icons/web"></script>
+<style>
+.battlecard{border:3px solid var(--black);margin:24px 0;overflow:hidden}
+.bc-header{background:var(--black);color:var(--white);padding:14px 20px;display:flex;justify-content:space-between;align-items:center}
+.bc-name{font-family:var(--heading);font-size:22px;font-weight:700;text-transform:uppercase;letter-spacing:2px}
+.bc-threat{font-size:13px;font-weight:700;padding:4px 12px;text-transform:uppercase;letter-spacing:1px}
+.bc-threat.high{background:#dc2626;color:#fff}
+.bc-threat.medium{background:#f59e0b;color:#000}
+.bc-threat.low{background:#22c55e;color:#fff}
+.bc-body{display:grid;grid-template-columns:1fr 1fr;gap:0}
+.bc-half{padding:20px;border-right:1px solid var(--border)}
+.bc-half:last-child{border-right:none}
+.bc-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--slate);margin-bottom:6px}
+.bc-text{font-size:16px;line-height:1.5}
+.bc-footer{border-top:1px solid var(--border);padding:16px 20px;background:var(--bg-muted)}
+.bc-footer-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--slate);margin-bottom:4px}
+.bc-footer-text{font-size:16px;font-style:italic;line-height:1.5}
+
+.channel-ring{display:flex;gap:0;margin:20px 0}
+.ring{flex:1;text-align:center;padding:14px 8px;border:1px solid var(--border)}
+.ring.inner{background:var(--black);color:var(--white);border-color:var(--black)}
+.ring.middle{background:var(--bg-muted)}
+.ring-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:6px}
+.ring.inner .ring-label{color:rgba(255,255,255,0.5)}
+.ring-items{font-size:14px;line-height:1.8}
+
+.sprint-task{display:flex;gap:16px;padding:14px 0;border-bottom:1px solid var(--border);align-items:flex-start}
+.sprint-task:last-child{border-bottom:none}
+.sprint-pri{width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0;font-family:var(--mono)}
+.sprint-pri.p0{background:#dc2626;color:#fff}
+.sprint-pri.p1{background:#f59e0b;color:#000}
+.sprint-pri.p2{background:#22c55e;color:#fff}
+.sprint-info{flex:1}
+.sprint-name{font-size:18px;font-weight:600}
+.sprint-meta{font-size:14px;color:var(--slate);margin-top:2px}
+
+.pos-map{display:grid;grid-template-columns:140px repeat(6,1fr);gap:0;border:3px solid var(--black);margin:24px 0;font-size:13px}
+.pos-col{border-right:1px solid var(--border);padding:0}
+.pos-col:last-child{border-right:none}
+.pos-head{background:var(--black);color:var(--white);padding:10px 8px;text-align:center;font-family:var(--heading);font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:1px}
+.pos-item{padding:10px 6px;border-bottom:1px solid var(--border);text-align:center;line-height:1.4;font-size:13px}
+.pos-item:last-child{border-bottom:none}
+.pos-item.win{background:#f0fdf4}
+.pos-item.lose{background:#fef2f2}
+.pos-item.na{color:var(--slate);background:var(--bg-muted)}
+.pos-col:first-child .pos-item{text-align:left;font-weight:700;padding-left:12px}
+.pos-col:first-child .pos-head{text-align:left;padding-left:12px}
+
+.easeui-col .pos-head{background:var(--accent);color:var(--black)}
+
+.bc-landmine{border-top:1px solid var(--border);padding:12px 20px;background:var(--bg-code)}
+.bc-landmine-label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:#dc2626;margin-bottom:4px}
+.bc-landmine-text{font-size:15px;line-height:1.5}
+
+.plg-step{display:flex;gap:16px;padding:16px 0;border-bottom:1px solid var(--border)}
+.plg-step:last-child{border-bottom:none}
+.plg-num{width:40px;height:40px;background:var(--black);color:var(--white);display:flex;align-items:center;justify-content:center;font-family:var(--heading);font-size:22px;font-weight:700;flex-shrink:0}
+.plg-content{flex:1}
+.plg-title{font-size:18px;font-weight:700;margin-bottom:4px}
+.plg-desc{font-size:15px;color:var(--slate);line-height:1.5}
+
+.email-seq{display:grid;grid-template-columns:60px 1fr 120px;gap:0;border:1px solid var(--border);margin:16px 0}
+.email-cell{padding:12px 14px;border-bottom:1px solid var(--border);font-size:16px}
+.email-cell:nth-child(3n){border-right:none}
+.email-cell.header{background:var(--black);color:var(--white);font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:1px}
+</style>
+</head>
+<body>
+<div class="layout">
+
+<!-- SIDEBAR -->
+<nav class="sidebar">
+<div class="sidebar-brand">
+<h2>EaseUI</h2>
+<p>GTM Plan 2026</p>
+</div>
+<div class="nav-group">
+<div class="nav-label">Plan</div>
+<a href="#summary" class="nav-link active"><span class="nav-stage-num">1</span> Executive Summary</a>
+<a href="#assess" class="nav-link"><span class="nav-stage-num">2</span> Assessment</a>
+<a href="#strategy" class="nav-link"><span class="nav-stage-num">3</span> Strategy & Positioning</a>
+<a href="#battlecards" class="nav-link"><span class="nav-stage-num">4</span> Battlecards</a>
+<a href="#channels" class="nav-link"><span class="nav-stage-num">5</span> Channels</a>
+<a href="#content" class="nav-link"><span class="nav-stage-num">6</span> Content Calendar</a>
+<a href="#launch" class="nav-link"><span class="nav-stage-num">7</span> Launch Sequence</a>
+</div>
+<div class="nav-group">
+<div class="nav-label">Metrics</div>
+<a href="#metrics" class="nav-link">KPIs & OKRs</a>
+<a href="#economics" class="nav-link">Unit Economics</a>
+<a href="#risks" class="nav-link">Risk Mitigation</a>
+<a href="#sprint" class="nav-link">Week 1 Sprint</a>
+</div>
+</nav>
+
+<!-- MAIN -->
+<main class="main">
+
+<!-- HERO -->
+<span class="tag tag-stage">EASESTART GTM</span>
+<h1>EaseUI — Go-to-Market Plan</h1>
+<p class="subtitle">AI design engineering platform. Prompt → UI → Design System → Production Code.</p>
+
+<div class="stats">
+<div class="stat"><div class="stat-val">$99</div><div class="stat-label">Lifetime Price</div></div>
+<div class="stat"><div class="stat-val">500</div><div class="stat-label">Slots (Limited)</div></div>
+<div class="stat"><div class="stat-val">172</div><div class="stat-label">Waitlist</div></div>
+<div class="stat"><div class="stat-val">11+</div><div class="stat-label">Countries</div></div>
+<div class="stat"><div class="stat-val">PLG</div><div class="stat-label">GTM Motion</div></div>
+</div>
+
+<div class="classification"><span class="cls-dot"></span> READY TO LAUNCH</div>
+
+<div class="verdict">
+<strong>Summary:</strong> EaseUI is the only AI design tool that generates designs AND extracts production design systems. PLG motion with $99 lifetime deal (500 slots) via Polar.sh. Near-zero cost (BYOK model). Target: $20K-$50K launch revenue.
+</div>
+
+<!-- SECTION 1: EXECUTIVE SUMMARY -->
+<h2 id="summary"><i class="ph ph-rocket-launch"></i> Executive Summary</h2>
+<p class="section-source">Generated via /gtm workflow — 23/03/2026</p>
+
+<table>
+<tr><th>Field</th><th>Value</th></tr>
+<tr><td><strong>Product</strong></td><td>AI-powered design engineering platform (prompt → UI → design system → code)</td></tr>
+<tr><td><strong>ICP</strong></td><td>Product Designers, PMs, Frontend Devs at startups & agencies (5-50 employees)</td></tr>
+<tr><td><strong>GTM Motion</strong></td><td>PLG primary + Content-Led secondary</td></tr>
+<tr><td><strong>Pricing</strong></td><td>$99 lifetime (Stage 3) → $19/mo (Stage 4) → $49/seat team (Stage 5)</td></tr>
+<tr><td><strong>Billing</strong></td><td>Polar.sh</td></tr>
+<tr><td><strong>Team</strong></td><td>3 people (Jang, Lucius, Barry)</td></tr>
+<tr><td><strong>Stage</strong></td><td>Stage 3 (MVP) → targeting Stage 4 (PMF)</td></tr>
+<tr><td><strong>Counter-Position</strong></td><td>"The only tool with AI gen + canvas + DS extraction + prod code"</td></tr>
+</table>
+
+<div class="why">
+<div class="why-label">ICP — Jobs to Be Done</div>
+<p style="font-size:17px;margin:0">"When I'm <strong>building a product UI</strong>, I'm frustrated that <strong>Figma can't generate code, and v0 can't give me a design system</strong> — Help me <strong>generate, iterate, and ship with design consistency</strong> so I <strong>stop wasting weeks on handoff</strong>."</p>
+</div>
+
+<!-- SECTION 2: ASSESSMENT -->
+<h2 id="assess"><i class="ph ph-exam"></i> Phase 1 — Assessment</h2>
+<p class="section-source">PMF + ICP + Stage Check</p>
+
+<h3>PMF Status</h3>
+<div class="metric-bar"><span class="metric-label">Sean Ellis PMF</span><div class="metric-track"><div class="metric-fill" style="width:0%"></div></div><span class="metric-val">TBD</span></div>
+<div class="metric-bar"><span class="metric-label">ICP Defined</span><div class="metric-track"><div class="metric-fill" style="width:100%"></div></div><span class="metric-val">✅</span></div>
+<div class="metric-bar"><span class="metric-label">Stage ≥ 3</span><div class="metric-track"><div class="metric-fill" style="width:100%"></div></div><span class="metric-val">✅</span></div>
+<div class="metric-bar"><span class="metric-label">Giantiny Fit</span><div class="metric-track"><div class="metric-fill" style="width:85%"></div></div><span class="metric-val">8.5/10</span></div>
+
+<div class="insight"><strong>Gate Decision:</strong> Proceed with caution. PMF not yet confirmed (pre-launch), but product functionally complete + billing live + 172 waitlist = demand validation. Run Sean Ellis after 50 paying users.</div>
+
+<h3>Giantiny Alignment</h3>
+<table>
+<tr><th>Pillar</th><th>Score</th><th>Evidence</th></tr>
+<tr><td><strong>① Customer Zero</strong></td><td>✅</td><td>Jang uses EaseUI daily</td></tr>
+<tr><td><strong>② Counter-Position</strong></td><td>✅</td><td>AI gen + DS extraction — no competitor has both</td></tr>
+<tr><td><strong>③ Code ≈ People</strong></td><td>✅</td><td>302 source files, 238 tests, zero-backend (BYOK)</td></tr>
+<tr><td><strong>④ Profit > Growth</strong></td><td>⚠️</td><td>$99 lifetime = no recurring. Watch item.</td></tr>
+<tr><td><strong>⑤ Micro-MOAT</strong></td><td>✅</td><td>Design system + community roadmap + templates</td></tr>
+</table>
+
+<!-- SECTION 3: STRATEGY -->
+<h2 id="strategy"><i class="ph ph-strategy"></i> Phase 2 — Strategy & Positioning</h2>
+<p class="section-source">GTM Motion Selection + Counter-Positioning</p>
+
+<h3>GTM Motion Decision Tree</h3>
+<table>
+<tr><th>Criteria</th><th>EaseUI</th><th>Result</th></tr>
+<tr><td>ACV < $10K?</td><td>$99 one-time</td><td><strong>✅ PLG</strong></td></tr>
+<tr><td>Self-serve possible?</td><td>Browser-based, zero config</td><td><strong>✅ PLG</strong></td></tr>
+<tr><td>End-user = buyer?</td><td>Designer/dev decides</td><td><strong>✅ PLG</strong></td></tr>
+<tr><td>Value in < 5 min?</td><td>Type prompt → 3 variants</td><td><strong>✅ PLG</strong></td></tr>
+<tr><td>Viral loop possible?</td><td>"Made with EaseUI" + shared URLs</td><td><strong>✅ PLG</strong></td></tr>
+</table>
+
+<div class="verdict"><strong>Motion:</strong> PLG (primary) + Content-Led (secondary). SLG rejected (ACV too low). CLG deferred (need 50+ users first).</div>
+
+<h3><i class="ph ph-path"></i> PLG Playbook — 5 Steps</h3>
+<p>The specific steps to execute PLG for EaseUI:</p>
+
+<div class="plg-step">
+<div class="plg-num">1</div>
+<div class="plg-content"><div class="plg-title">Free Tier with Real Value</div><div class="plg-desc">3 generations/day, 1 project, community export. NOT crippled — user must experience the "aha moment" before paying.</div></div>
+</div>
+<div class="plg-step">
+<div class="plg-num">2</div>
+<div class="plg-content"><div class="plg-title">Activation < 5 Minutes</div><div class="plg-desc">Landing page → sign up → type first prompt → see 3 variants. Zero config. No "choose your plan" before trying.</div></div>
+</div>
+<div class="plg-step">
+<div class="plg-num">3</div>
+<div class="plg-content"><div class="plg-title">Viral Loop in Core Action</div><div class="plg-desc">Every shared design = marketing (like Calendly link). "Made with EaseUI" on free exports. Shareable design URLs (Figma-style).</div></div>
+</div>
+<div class="plg-step">
+<div class="plg-num">4</div>
+<div class="plg-content"><div class="plg-title">Lifetime Deal ($99) — Launch Weapon</div><div class="plg-desc">500 slots (scarcity = urgency). Unlimited generations + all features. Design system export included. "Early Supporter" badge.</div></div>
+</div>
+<div class="plg-step">
+<div class="plg-num">5</div>
+<div class="plg-content"><div class="plg-title">Pricing Evolution (3-Phase via Polar.sh)</div><div class="plg-desc">Phase 1: $99 lifetime (500 slots) → Phase 2: +$19/mo subscription (PMF proven) → Phase 3: +$49/seat team tier (B2B).</div></div>
+</div>
+
+<div class="why" style="margin-top:20px">
+<div class="why-label">Anti-Patterns to Avoid</div>
+<p style="font-size:15px;margin:0">❌ Gating AI generation behind paywall (core value must be free)<br>❌ Requiring email before first generation (let them try anonymous)<br>❌ No usage analytics (can't optimize what you don't measure)<br>❌ Over-engineering onboarding (keep it 2 clicks to first design)</p>
+</div>
+
+<h3><i class="ph ph-shield-warning"></i> Counter-Positioning (Hamilton Helmer)</h3>
+<p>What <strong>structurally prevents</strong> each competitor from copying EaseUI:</p>
+<table>
+<tr><th>Incumbent</th><th>Structural Anchor</th><th>Why They CAN'T Copy</th></tr>
+<tr><td><strong>Google Stitch</strong></td><td>Platform lock-in</td><td>HTML/CSS only. React/Next.js DS export conflicts with Google's platform strategy.</td></tr>
+<tr><td><strong>v0 (Vercel)</strong></td><td>Revenue model</td><td>Credit-based pricing. Canvas + DS extraction would cannibalize per-gen pricing.</td></tr>
+<tr><td><strong>Bolt.new</strong></td><td>Architecture</td><td>WebContainer full-stack tool. Canvas + DS = fundamentally different product.</td></tr>
+<tr><td><strong>SuperDesign</strong></td><td>Process inertia</td><td>IDE-first ideology. Canvas contradicts "stay in VS Code" philosophy.</td></tr>
+<tr><td><strong>Efecto</strong></td><td>Maturity gap</td><td>6+ months behind. No production output yet. By the time they ship, EaseUI has base.</td></tr>
+<tr><td><strong>Figma</strong></td><td>Revenue model</td><td>$15-75/seat/mo. Code export disintermediates their Dev Mode ($25/seat) revenue.</td></tr>
+</table>
+
+<h3><i class="ph ph-chart-bar"></i> Positioning Map — Feature Comparison</h3>
+<p>How EaseUI stacks up against every major competitor on the 5 key capabilities:</p>
+<div class="pos-map">
+<div class="pos-col">
+<div class="pos-head">Capability</div>
+<div class="pos-item">AI Generation</div>
+<div class="pos-item">Visual Canvas</div>
+<div class="pos-item">DS Extraction</div>
+<div class="pos-item">Prod Code</div>
+<div class="pos-item">Open Source</div>
+</div>
+<div class="pos-col easeui-col">
+<div class="pos-head">EaseUI</div>
+<div class="pos-item win">✅ Native</div>
+<div class="pos-item win">✅ Infinite</div>
+<div class="pos-item win">✅ Only one</div>
+<div class="pos-item win">✅ React</div>
+<div class="pos-item na">—</div>
+</div>
+<div class="pos-col">
+<div class="pos-head">Stitch</div>
+<div class="pos-item win">✅ Gemini 3</div>
+<div class="pos-item win">✅ Voice</div>
+<div class="pos-item lose">❌</div>
+<div class="pos-item lose">HTML only</div>
+<div class="pos-item na">—</div>
+</div>
+<div class="pos-col">
+<div class="pos-head">SuperDsgn</div>
+<div class="pos-item win">✅ Gemini 3</div>
+<div class="pos-item lose">❌ IDE only</div>
+<div class="pos-item lose">❌</div>
+<div class="pos-item win">✅ React</div>
+<div class="pos-item win">✅ MIT</div>
+</div>
+<div class="pos-col">
+<div class="pos-head">v0</div>
+<div class="pos-item win">✅</div>
+<div class="pos-item lose">❌</div>
+<div class="pos-item lose">❌</div>
+<div class="pos-item win">✅ ShadCN</div>
+<div class="pos-item na">—</div>
+</div>
+<div class="pos-col">
+<div class="pos-head">Efecto</div>
+<div class="pos-item win">✅ Agents</div>
+<div class="pos-item win">✅ Basic</div>
+<div class="pos-item lose">❌</div>
+<div class="pos-item lose">❌</div>
+<div class="pos-item na">—</div>
+</div>
+<div class="pos-col">
+<div class="pos-head">Figma</div>
+<div class="pos-item lose">⚠️ Bolted</div>
+<div class="pos-item win">✅ Best</div>
+<div class="pos-item lose">❌</div>
+<div class="pos-item lose">❌</div>
+<div class="pos-item na">—</div>
+</div>
+</div>
+
+<div class="insight"><strong>Key takeaway:</strong> EaseUI is the ONLY tool with «DS Extraction» — the ability to extract production-ready design system tokens (W3C Style Dictionary, TypeScript, CSS Variables) from generated designs. This is the structural moat.</div>
+
+<!-- SECTION 4: BATTLECARDS -->
+<h2 id="battlecards"><i class="ph ph-sword"></i> Competitive Battlecards</h2>
+<p class="section-source">6 competitors analyzed — March 2026</p>
+
+<div class="battlecard">
+<div class="bc-header"><span class="bc-name">vs Google Stitch</span><span class="bc-threat high">🔴 HIGH</span></div>
+<div class="bc-body">
+<div class="bc-half"><div class="bc-label">Where We Win</div><div class="bc-text"><strong>Design system extraction</strong> (W3C Style Dict, TypeScript, CSS Vars) + React/Next.js export. Stitch = HTML/CSS only.</div></div>
+<div class="bc-half"><div class="bc-label">Where They Win</div><div class="bc-text">Google brand, free, Gemini 3 native, Voice Canvas, multi-screen flows, DESIGN.md format.</div></div>
+</div>
+<div class="bc-landmine"><div class="bc-landmine-label"><i class="ph ph-warning"></i> Landmine</div><div class="bc-landmine-text">Google Labs project — could be killed anytime (Stadia, Domains, etc.). No React/Next.js export. Design tokens not extractable.</div></div>
+<div class="bc-footer"><div class="bc-footer-label">Objection Handler</div><div class="bc-footer-text">"Stitch is great for exploring ideas. EaseUI is for when you need to <em>ship</em> — production React code + a design system your team can use."</div></div>
+</div>
+
+<div class="battlecard">
+<div class="bc-header"><span class="bc-name">vs SuperDesign</span><span class="bc-threat medium">🟡 MEDIUM</span></div>
+<div class="bc-body">
+<div class="bc-half"><div class="bc-label">Where We Win</div><div class="bc-text">Visual canvas for iteration. SuperDesign is IDE-only — generates but can't compare, iterate, or refine side-by-side.</div></div>
+<div class="bc-half"><div class="bc-label">Where They Win</div><div class="bc-text">Open-source (MIT), IDE-native (VS Code/Cursor), clone-and-modify existing sites.</div></div>
+</div>
+<div class="bc-landmine"><div class="bc-landmine-label"><i class="ph ph-warning"></i> Landmine</div><div class="bc-landmine-text">Token costs: ~$4 per 2 pages via API. No design system output. Still beta. IDE-only = designers can't use it.</div></div>
+<div class="bc-footer"><div class="bc-footer-label">Objection Handler</div><div class="bc-footer-text">"SuperDesign is for devs in VS Code. EaseUI is for the <em>design conversation</em> — see 3 options, pick one, extract a design system."</div></div>
+</div>
+
+<div class="battlecard">
+<div class="bc-header"><span class="bc-name">vs Efecto</span><span class="bc-threat medium">🟡 MEDIUM</span></div>
+<div class="bc-body">
+<div class="bc-half"><div class="bc-label">Where We Win</div><div class="bc-text">Production output. EaseUI exports React code + DS tokens. Efecto has 46 agent tools but no code export, no DS extraction.</div></div>
+<div class="bc-half"><div class="bc-label">Where They Win</div><div class="bc-text">Agent-first architecture (REST API, SSE streaming), vision for multiple specialized AI agents.</div></div>
+</div>
+<div class="bc-landmine"><div class="bc-landmine-label"><i class="ph ph-warning"></i> Landmine</div><div class="bc-landmine-text">Still "basic" (their own words, Feb 2026). Agent Jules is early. No code export. $9-99/mo subscription = recurring vs EaseUI lifetime $99.</div></div>
+<div class="bc-footer"><div class="bc-footer-label">Objection Handler</div><div class="bc-footer-text">"Efecto is building an AI agent platform. EaseUI is what you use <em>today</em> to generate, iterate, and ship production code."</div></div>
+</div>
+
+<div class="battlecard">
+<div class="bc-header"><span class="bc-name">vs v0 (Vercel)</span><span class="bc-threat medium">🟡 MEDIUM</span></div>
+<div class="bc-body">
+<div class="bc-half"><div class="bc-label">Where We Win</div><div class="bc-text">Canvas + design system. v0 = isolated generations → copy-paste. No iteration, no shared tokens, no consistency.</div></div>
+<div class="bc-half"><div class="bc-label">Where They Win</div><div class="bc-text">Vercel ecosystem, ShadCN integration, brand, community, $20/mo.</div></div>
+</div>
+<div class="bc-landmine"><div class="bc-landmine-label"><i class="ph ph-warning"></i> Landmine</div><div class="bc-landmine-text">v0 generates components, not design systems. Every generation is isolated — no shared tokens, no consistency across pages.</div></div>
+<div class="bc-footer"><div class="bc-footer-label">Objection Handler</div><div class="bc-footer-text">"v0 is great for one-off components. EaseUI is for building a <em>consistent design language</em> across your product."</div></div>
+</div>
+
+<div class="battlecard">
+<div class="bc-header"><span class="bc-name">vs Bolt.new</span><span class="bc-threat medium">🟡 MEDIUM</span></div>
+<div class="bc-body">
+<div class="bc-half"><div class="bc-label">Where We Win</div><div class="bc-text">Design quality + consistency. Bolt builds full-stack apps but every page looks different — no design system.</div></div>
+<div class="bc-half"><div class="bc-label">Where They Win</div><div class="bc-text">Full-stack (backend + DB), WebContainer browser IDE, Netlify deployment.</div></div>
+</div>
+<div class="bc-landmine"><div class="bc-landmine-label"><i class="ph ph-warning"></i> Landmine</div><div class="bc-landmine-text">Bolt is a code generator, not a design tool. 10M tokens/mo on Pro ($25/mo) runs out fast on complex apps.</div></div>
+<div class="bc-footer"><div class="bc-footer-label">Objection Handler</div><div class="bc-footer-text">"Bolt builds apps. EaseUI builds <em>design languages</em>. Use both: EaseUI for the design system, Bolt for the backend."</div></div>
+</div>
+
+<div class="battlecard">
+<div class="bc-header"><span class="bc-name">vs Figma</span><span class="bc-threat high">🔴 HIGH</span></div>
+<div class="bc-body">
+<div class="bc-half"><div class="bc-label">Where We Win</div><div class="bc-text">AI generation + code export. Figma added AI in 2026 but it's bolted-on — still requires manual handoff.</div></div>
+<div class="bc-half"><div class="bc-label">Where They Win</div><div class="bc-text">Industry standard, collaboration, plugin ecosystem, enterprise trust.</div></div>
+</div>
+<div class="bc-landmine"><div class="bc-landmine-label"><i class="ph ph-warning"></i> Landmine</div><div class="bc-landmine-text">Figma-to-code is still a one-way, lossy process in 2026. Figma AI generates within Figma's paradigm — no React/Next.js export.</div></div>
+<div class="bc-footer"><div class="bc-footer-label">Objection Handler</div><div class="bc-footer-text">"Figma is the standard for design teams. EaseUI is for when designers and devs need <em>one source of truth</em> that generates production code."</div></div>
+</div>
+
+<!-- SECTION 5: CHANNELS -->
+<h2 id="channels"><i class="ph ph-target"></i> Channel Strategy</h2>
+<p class="section-source">Bullseye Framework — 3 rings</p>
+
+<p>The <strong>Bullseye Framework</strong> (from <em>Traction</em>) narrows 19 possible channels into 3 rings. Start with the Inner Ring, test for 2 weeks each, then double down on what works. All EaseUI channels are <strong>$0 budget</strong> — organic only.</p>
+
+<div class="channel-ring">
+<div class="ring inner">
+<div class="ring-label">Inner Ring (Week 1-4)</div>
+<div class="ring-items">📝 Content/Blog<br>🐦 Build-in-Public (X)<br>🚀 Product Hunt + HN</div>
+</div>
+<div class="ring middle">
+<div class="ring-label">Middle Ring (Week 4-8)</div>
+<div class="ring-items">📰 Dev.to / Hashnode<br>🎬 YouTube demos<br>📱 Reddit<br>💰 AppSumo</div>
+</div>
+<div class="ring">
+<div class="ring-label">Outer Ring (Month 3+)</div>
+<div class="ring-items">💬 Discord<br>🔌 Figma plugin<br>📧 Newsletter<br>📢 Paid ads</div>
+</div>
+</div>
+
+<div class="insight"><strong>Anti-pattern:</strong> "Don't spread across 5+ channels — you'll be mediocre at all" (Bullseye Framework). Focus on Inner Ring first.</div>
+
+<h3>Channel Details — Inner Ring</h3>
+<table>
+<tr><th>#</th><th>Channel</th><th>Giantiny Fit</th><th>Effort</th><th>Expected</th></tr>
+<tr><td>1</td><td><strong>Content/Blog</strong></td><td>⑤/⑤</td><td>3-4h/wk</td><td>SEO compound over time</td></tr>
+<tr><td>2</td><td><strong>Build-in-Public (X)</strong></td><td>④/⑤</td><td>15 min/day</td><td>500-2K followers/mo</td></tr>
+<tr><td>3</td><td><strong>Product Hunt + Show HN</strong></td><td>④/⑤</td><td>1 week prep</td><td>5K-50K visitors</td></tr>
+</table>
+
+<!-- SECTION 6: CONTENT CALENDAR -->
+<h2 id="content"><i class="ph ph-calendar-blank"></i> 30-Day Content Calendar</h2>
+<p class="section-source">Content-Led secondary motion</p>
+
+<h3>Pillar Content (SEO)</h3>
+<table>
+<tr><th>Week</th><th>Content</th><th>Channel</th><th>Type</th></tr>
+<tr><td>1</td><td>"How EaseUI generates 6 variants from 1 prompt"</td><td>Blog + Dev.to</td><td>Tutorial</td></tr>
+<tr><td>2</td><td><strong>"EaseUI vs v0 vs Bolt vs Stitch — 2026"</strong></td><td>Blog</td><td>Comparison 🔥</td></tr>
+<tr><td>3</td><td>"Building infinite canvas in React at 60 FPS"</td><td>Blog + Dev.to</td><td>Deep Dive</td></tr>
+<tr><td>4</td><td>"Why I chose $99 lifetime over $20/mo"</td><td>Blog + X</td><td>Hot Take</td></tr>
+</table>
+
+<h3>Social Content (Build-in-Public)</h3>
+<table>
+<tr><th>Frequency</th><th>Format</th><th>Example</th></tr>
+<tr><td>3-5x/week</td><td>X threads</td><td>"Week 7: shipped design system export. Here's the architecture..."</td></tr>
+<tr><td>2x/week</td><td>Short demos</td><td>60-second screen recording of a generation</td></tr>
+<tr><td>1x/week</td><td>Milestone</td><td>"172 → 300 waitlist. What I learned about SEO for dev tools"</td></tr>
+</table>
+
+<h3><i class="ph ph-envelope-simple"></i> Email Welcome Sequence</h3>
+<p>3-part automated sequence triggered on signup:</p>
+<div class="email-seq">
+<div class="email-cell header">Day</div><div class="email-cell header">Subject</div><div class="email-cell header">Goal</div>
+<div class="email-cell" style="font-weight:700">0</div><div class="email-cell">"Welcome! Generate your first UI in 2 min"</div><div class="email-cell" style="color:var(--slate)">Activation</div>
+<div class="email-cell" style="font-weight:700">2</div><div class="email-cell">"The trick most people miss about AI designs"</div><div class="email-cell" style="color:var(--slate)">Feature discovery</div>
+<div class="email-cell" style="font-weight:700;border-bottom:none">7</div><div class="email-cell" style="border-bottom:none">"172 devs from 11 countries trust EaseUI"</div><div class="email-cell" style="color:var(--slate);border-bottom:none">Social proof → buy</div>
+</div>
+
+<h3><i class="ph ph-magnet"></i> Lead Magnets</h3>
+<div class="grid">
+<div class="card">
+<div class="card-tag">Email Capture</div>
+<h3>React Component Checklist</h3>
+<p>14-item quality checklist for production-ready components. Nurture → trial → purchase.</p>
+</div>
+<div class="card">
+<div class="card-tag">Product Demo</div>
+<h3>AI Design Prompt Templates</h3>
+<p>50 prompts that showcase EaseUI capabilities. Free download → email → trial.</p>
+</div>
+<div class="card">
+<div class="card-tag">Dev Resource</div>
+<h3>Design System Starter Kit</h3>
+<p>CSS Variables + Tokens template. Demonstrates EaseUI's DS export quality.</p>
+</div>
+</div>
+
+<!-- SECTION 7: LAUNCH SEQUENCE -->
+<h2 id="launch"><i class="ph ph-rocket"></i> Launch Sequence</h2>
+<p class="section-source">3-phase launch plan</p>
+
+<h3>Phase 1: Prep (Week -2)</h3>
+<div class="timeline">
+<div class="tl-item"><div class="tl-label">Asset Prep</div><div class="tl-text">Lifetime deal page live ($99, 500 slots, countdown timer)</div></div>
+<div class="tl-item"><div class="tl-label">Product Hunt</div><div class="tl-text">Maker profile + video + GIF + screenshots</div></div>
+<div class="tl-item"><div class="tl-label">Hacker News</div><div class="tl-text">Write genuine technical narrative</div></div>
+<div class="tl-item"><div class="tl-label">SEO Lead</div><div class="tl-text">Draft comparison blog post (v0 vs Bolt vs Stitch vs EaseUI)</div></div>
+<div class="tl-item"><div class="tl-label">Warm Up</div><div class="tl-text">3-day X thread series (build-in-public lead-up)</div></div>
+</div>
+
+<h3>Phase 2: Launch Week 🚀</h3>
+<div class="timeline">
+<div class="tl-item done"><div class="tl-label">Monday</div><div class="tl-text">Publish SEO comparison post (indexing lead time)</div></div>
+<div class="tl-item done"><div class="tl-label">Tuesday</div><div class="tl-text"><strong>Product Hunt launch</strong> — "Lifetime deal $99 — 500 slots"</div></div>
+<div class="tl-item done"><div class="tl-label">Wednesday</div><div class="tl-text"><strong>Show HN post</strong> — ride Product Hunt momentum</div></div>
+<div class="tl-item"><div class="tl-label">Thu–Fri</div><div class="tl-text">Respond to EVERY comment, DM, email</div></div>
+<div class="tl-item"><div class="tl-label">Weekend</div><div class="tl-text">Dev.to technical deep dive post</div></div>
+</div>
+
+<div class="why">
+<div class="why-label">Week 1 Target</div>
+<p style="font-size:17px;margin:0">172 waitlist × 25% conversion = <strong>~43 sales = $4,257</strong></p>
+</div>
+
+<h3>Phase 3: Lifetime Sprint (Week 1-4)</h3>
+<div class="timeline">
+<div class="tl-item"><div class="tl-label">Daily</div><div class="tl-text">X build-in-public + "X slots remaining" counter</div></div>
+<div class="tl-item"><div class="tl-label">Weekly</div><div class="tl-text">YouTube demo video</div></div>
+<div class="tl-item"><div class="tl-label">Bi-weekly</div><div class="tl-text">Technical blog post</div></div>
+<div class="tl-item"><div class="tl-label">AppSumo</div><div class="tl-text">List on AppSumo for lifetime deal crowd</div></div>
+</div>
+
+<div class="insight"><strong>Goal:</strong> 200-500 lifetime sales = <strong>$19,800 - $49,500</strong></div>
+
+<!-- SECTION 8: METRICS -->
+<h2 id="metrics"><i class="ph ph-chart-line-up"></i> KPIs & OKRs</h2>
+<p class="section-source">Month 1 targets</p>
+
+<h3>Key Metrics</h3>
+<div class="metric-bar"><span class="metric-label">Lifetime Slots Sold</span><div class="metric-track"><div class="metric-fill" style="width:40%"></div></div><span class="metric-val">200/500</span></div>
+<div class="metric-bar"><span class="metric-label">Revenue</span><div class="metric-track"><div class="metric-fill" style="width:40%"></div></div><span class="metric-val">$19.8K</span></div>
+<div class="metric-bar"><span class="metric-label">Activation Rate</span><div class="metric-track"><div class="metric-fill" style="width:40%"></div></div><span class="metric-val">>40%</span></div>
+<div class="metric-bar"><span class="metric-label">Time-to-Value</span><div class="metric-track"><div class="metric-fill" style="width:100%"></div></div><span class="metric-val"><3 min</span></div>
+<div class="metric-bar"><span class="metric-label">Waitlist Convert</span><div class="metric-track"><div class="metric-fill" style="width:25%"></div></div><span class="metric-val">>25%</span></div>
+<div class="metric-bar"><span class="metric-label">D7 Retention</span><div class="metric-track"><div class="metric-fill" style="width:20%"></div></div><span class="metric-val">>20%</span></div>
+<div class="metric-bar"><span class="metric-label">Viral Coefficient</span><div class="metric-track"><div class="metric-fill" style="width:30%"></div></div><span class="metric-val">>0.3</span></div>
+
+<h3>OKRs (Month 1)</h3>
+<table>
+<tr><th>Objective</th><th>Key Result</th></tr>
+<tr><td><strong>Launch successfully</strong></td><td>≥200 lifetime sales in 30 days</td></tr>
+<tr><td><strong>Prove activation</strong></td><td>≥40% signup → first generation</td></tr>
+<tr><td><strong>Build audience</strong></td><td>≥1,000 X followers</td></tr>
+<tr><td><strong>SEO foundation</strong></td><td>≥3 blog posts indexed by Google</td></tr>
+</table>
+
+<!-- SECTION 9: ECONOMICS -->
+<h2 id="economics"><i class="ph ph-currency-circle-dollar"></i> Unit Economics</h2>
+<p class="section-source">Giantiny ④ — Profit First</p>
+
+<div class="compare-grid">
+<div class="compare-col">
+<h4>Costs</h4>
+<div class="data-row"><span class="data-label">Vercel hosting:</span> $0 (free tier)</div>
+<div class="data-row"><span class="data-label">Supabase:</span> $0 (free tier)</div>
+<div class="data-row"><span class="data-label">Gemini API:</span> ~$0 (users bring own keys)</div>
+<div class="data-row"><span class="data-label">Domain:</span> ~$12/year</div>
+<div class="data-row"><span class="data-label">Monthly burn:</span> <strong>~$1</strong></div>
+</div>
+<div class="compare-col">
+<h4>Revenue Scenarios</h4>
+<div class="data-row"><span class="data-label">Conservative:</span> 200 slots = <strong>$19,800</strong></div>
+<div class="data-row"><span class="data-label">Target:</span> 350 slots = <strong>$34,650</strong></div>
+<div class="data-row"><span class="data-label">Stretch:</span> 500 slots = <strong>$49,500</strong></div>
+<div class="data-row"><span class="data-label">Gross Margin:</span> <strong>~90%</strong> (BYOK)</div>
+<div class="data-row"><span class="data-label">LTV:CAC:</span> <strong>∞</strong> (organic)</div>
+</div>
+</div>
+
+<h3>Pricing Roadmap</h3>
+<div class="timeline">
+<div class="tl-item done"><div class="tl-label">Stage 3 (Now)</div><div class="tl-text"><strong>$99 lifetime</strong> — maximize adoption, build base (500 slots via Polar.sh)</div></div>
+<div class="tl-item"><div class="tl-label">Stage 4 (PMF)</div><div class="tl-text"><strong>+ $19/mo subscription</strong> — recurring revenue after slots sell out</div></div>
+<div class="tl-item"><div class="tl-label">Stage 5 (Scale)</div><div class="tl-text"><strong>+ $49/seat team tier</strong> — B2B expansion</div></div>
+</div>
+
+<!-- SECTION 10: RISKS -->
+<h2 id="risks"><i class="ph ph-shield-warning"></i> Risk Mitigation</h2>
+<p class="section-source">6 key risks identified</p>
+
+<table>
+<tr><th>Risk</th><th>Likelihood</th><th>Mitigation</th></tr>
+<tr><td><strong>Google Stitch captures market</strong></td><td>🔴 High</td><td>Stitch can't export React/DS. Focus on production output moat.</td></tr>
+<tr><td><strong>Figma adds native AI</strong></td><td>🔴 High</td><td>Already added — but bolted-on. Native advantage holds.</td></tr>
+<tr><td>Efecto/SuperDesign catch up</td><td>🟡 Medium</td><td>Ship fast. 6+ month head start. Build user base.</td></tr>
+<tr><td>No recurring revenue</td><td>🟡 Medium</td><td>Transition to $19/mo after lifetime. $49/seat for teams.</td></tr>
+<tr><td>Low activation rate</td><td>🟡 Medium</td><td>A/B test onboarding. Target: 2 clicks to first design.</td></tr>
+<tr><td>Solo founder burnout</td><td>🔴 High</td><td>Automate everything. Team of 3. 4-phase roadmap.</td></tr>
+</table>
+
+<div class="verdict" style="border-left-color:#dc2626;margin-top:24px">
+<strong>🔴 P0 Blocker:</strong> Terms of Service + Privacy Policy <strong>MUST</strong> ship before launch. Use Termly ($99/yr, 30 min setup). No launch without legal protection.
+</div>
+
+<!-- SECTION 11: SPRINT -->
+<h2 id="sprint"><i class="ph ph-check-square"></i> Week 1 Sprint</h2>
+<p class="section-source">Handoff to /sprint-growth</p>
+
+<div class="sprint-task">
+<div class="sprint-pri p0">P0</div>
+<div class="sprint-info"><div class="sprint-name">Ship ToS + Privacy Policy</div><div class="sprint-meta">Jang · 1h · Termly</div></div>
+</div>
+<div class="sprint-task">
+<div class="sprint-pri p0">P0</div>
+<div class="sprint-info"><div class="sprint-name">Set up lifetime deal page</div><div class="sprint-meta">Jang · 2h · Polar.sh, 500 slots, countdown</div></div>
+</div>
+<div class="sprint-task">
+<div class="sprint-pri p0">P0</div>
+<div class="sprint-info"><div class="sprint-name">Write comparison blog post</div><div class="sprint-meta">Jang · 4h · v0 vs Bolt vs Stitch vs EaseUI</div></div>
+</div>
+<div class="sprint-task">
+<div class="sprint-pri p1">P1</div>
+<div class="sprint-info"><div class="sprint-name">Prep Product Hunt assets</div><div class="sprint-meta">Team · 4h · Video, GIF, copy</div></div>
+</div>
+<div class="sprint-task">
+<div class="sprint-pri p1">P1</div>
+<div class="sprint-info"><div class="sprint-name">Write Show HN narrative</div><div class="sprint-meta">Jang · 2h · Technical story</div></div>
+</div>
+<div class="sprint-task">
+<div class="sprint-pri p1">P1</div>
+<div class="sprint-info"><div class="sprint-name">Set up PostHog analytics</div><div class="sprint-meta">Barry · 2h · Track activation + retention</div></div>
+</div>
+<div class="sprint-task">
+<div class="sprint-pri p2">P2</div>
+<div class="sprint-info"><div class="sprint-name">Start X build-in-public</div><div class="sprint-meta">Jang · 15 min/day · Daily ritual</div></div>
+</div>
+<div class="sprint-task">
+<div class="sprint-pri p2">P2</div>
+<div class="sprint-info"><div class="sprint-name">Set up Sentry monitoring</div><div class="sprint-meta">Barry · 1h · Error alerting</div></div>
+</div>
+
+<!-- SCORECARD -->
+<div class="scorecard">
+<div class="scorecard-title">GTM Readiness Scorecard</div>
+<div class="score-row"><span class="score-label">Product Complete</span><div class="score-track"><div class="score-fill" style="width:90%"></div></div><span class="score-val">9/10</span></div>
+<div class="score-why">35 features, 25+ releases, 302 source files, 238 tests</div>
+<div class="score-row"><span class="score-label">Pricing Validated</span><div class="score-track"><div class="score-fill" style="width:80%"></div></div><span class="score-val">8/10</span></div>
+<div class="score-why">$99 lifetime via Polar.sh. 90% gross margin. BYOK model.</div>
+<div class="score-row"><span class="score-label">ICP Defined</span><div class="score-track"><div class="score-fill" style="width:85%"></div></div><span class="score-val">8.5/10</span></div>
+<div class="score-why">Behavioral ICP (designers/devs frustrated with handoff). 172 waitlist validates.</div>
+<div class="score-row"><span class="score-label">Counter-Position</span><div class="score-track"><div class="score-fill" style="width:90%"></div></div><span class="score-val">9/10</span></div>
+<div class="score-why">6 structural anchors identified. DS extraction = unique moat.</div>
+<div class="score-row"><span class="score-label">Channel Plan</span><div class="score-track"><div class="score-fill" style="width:85%"></div></div><span class="score-val">8.5/10</span></div>
+<div class="score-why">3 inner-ring channels, $0 budget, all organic. Content calendar ready.</div>
+<div class="score-total"><span class="score-label">Overall</span><div class="score-track"><div class="score-fill" style="width:86%"></div></div><span class="score-val">86/100</span></div>
+<div class="score-verdict">High confidence. Product ready, position clear, channels selected. P0 blockers: Legal (ToS/Privacy) + Analytics (PostHog).</div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+<div class="footer-brand">EaseStart</div>
+<p>Generated by EaseStart Growth Agent via /gtm workflow — 23/03/2026</p>
+<p>8 EaseStart searches · 6 battlecards · 11 channels analyzed · 2026 competitive landscape</p>
+</div>
+
+</main>
+</div>
+
+<script>
+document.querySelectorAll('.nav-link[href^="#"]').forEach(a=>{
+a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)t.scrollIntoView({behavior:'smooth',block:'start'});
+document.querySelectorAll('.nav-link').forEach(l=>l.classList.remove('active'));a.classList.add('active')})});
+const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){const id=e.target.id;document.querySelectorAll('.nav-link').forEach(l=>{l.classList.toggle('active',l.getAttribute('href')==='#'+id)})}})},{threshold:0.2});
+document.querySelectorAll('h2[id]').forEach(h=>obs.observe(h));
+</script>
+</body>
+</html>
