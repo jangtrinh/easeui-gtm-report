@@ -288,7 +288,7 @@
 
 <!-- SECTION 4: BATTLECARDS -->
 <h2 id="battlecards"><i class="ph ph-sword"></i> Competitive Battlecards</h2>
-<p class="section-source">6 competitors analyzed — March 2026</p>
+<p class="section-source">8 competitors analyzed — March 2026 (from 33 deep-dive documents)</p>
 
 <div class="battlecard">
 <div class="bc-header"><span class="bc-name">vs Google Stitch</span><span class="bc-threat high">🔴 HIGH</span></div>
@@ -311,13 +311,13 @@
 </div>
 
 <div class="battlecard">
-<div class="bc-header"><span class="bc-name">vs Efecto</span><span class="bc-threat medium">🟡 MEDIUM</span></div>
+<div class="bc-header"><span class="bc-name">vs Efecto</span><span class="bc-threat high">🔴 HIGH</span></div>
 <div class="bc-body">
-<div class="bc-half"><div class="bc-label">Where We Win</div><div class="bc-text">Production output. EaseUI exports React code + DS tokens. Efecto has 46 agent tools but no code export, no DS extraction.</div></div>
-<div class="bc-half"><div class="bc-label">Where They Win</div><div class="bc-text">Agent-first architecture (REST API, SSE streaming), vision for multiple specialized AI agents.</div></div>
+<div class="bc-half"><div class="bc-label">Where We Win</div><div class="bc-text"><strong>AI Art Direction quality</strong> (36 personas, style diversity) — Efecto admits "AI designs still suck." <strong>3-phase DS extraction</strong> (foundations→components→code). Zero-setup browser-based. Properties Inspector for pixel control. Multi-provider (8×3 models).</div></div>
+<div class="bc-half"><div class="bc-label">Where They Win</div><div class="bc-text"><strong>43 MCP tools</strong> (Claude Code, Cursor, Windsurf, Copilot, Gemini CLI all work). Real React/Tailwind canvas (code = what you see). <strong>Vercel deploy</strong> (one-click → live site). Real-time multiplayer + AI pairing. FX engine (ASCII, glitch, dither). Pablo Stanley's design community reach (100K+ followers).</div></div>
 </div>
-<div class="bc-landmine"><div class="bc-landmine-label"><i class="ph ph-warning"></i> Landmine</div><div class="bc-landmine-text">Still "basic" (their own words, Feb 2026). Agent Jules is early. No code export. $9-99/mo subscription = recurring vs EaseUI lifetime $99.</div></div>
-<div class="bc-footer"><div class="bc-footer-label">Objection Handler</div><div class="bc-footer-text">"Efecto is building an AI agent platform. EaseUI is what you use <em>today</em> to generate, iterate, and ship production code."</div></div>
+<div class="bc-landmine"><div class="bc-landmine-label"><i class="ph ph-warning"></i> Landmine</div><div class="bc-landmine-text">Efecto requires Node.js + terminal for MCP setup — NOT zero-setup. Artboard-based (not infinite canvas). Component templates are basic shadcn-style. No design system <em>extraction</em> from existing designs. Creator admits AI output quality is "still basic." Subscription ($9-99/mo) vs EaseUI lifetime ($99).</div></div>
+<div class="bc-footer"><div class="bc-footer-label">Objection Handler</div><div class="bc-footer-text">"Efecto is building the <em>infrastructure</em> for AI agents to design. EaseUI is the <em>tool</em> you use today — with 36 art direction personas, W3C design tokens, and production React export. Open browser, start designing, extract a design system."</div></div>
 </div>
 
 <div class="battlecard">
@@ -349,6 +349,31 @@
 <div class="bc-landmine"><div class="bc-landmine-label"><i class="ph ph-warning"></i> Landmine</div><div class="bc-landmine-text">Figma-to-code is still a one-way, lossy process in 2026. Figma AI generates within Figma's paradigm — no React/Next.js export.</div></div>
 <div class="bc-footer"><div class="bc-footer-label">Objection Handler</div><div class="bc-footer-text">"Figma is the standard for design teams. EaseUI is for when designers and devs need <em>one source of truth</em> that generates production code."</div></div>
 </div>
+
+<!-- TABLE STAKES & STRATEGIC GAPS -->
+<h3><i class="ph ph-warning-circle"></i> Table Stakes (Must-Have by 2026)</h3>
+<p style="color:var(--slate);font-size:14px">From cross-competitor analysis: features ALL serious competitors now offer.</p>
+<table>
+<tr><th>Feature</th><th>Who Has It</th><th>EaseUI Status</th></tr>
+<tr><td><strong>MCP Server</strong></td><td>Stitch, Efecto (43), Vibma (36), ShipSwift</td><td>❌ P1 priority</td></tr>
+<tr><td><strong>One-click Deploy</strong></td><td>Efecto (Vercel), Stitch (AI Studio)</td><td>❌ P1</td></tr>
+<tr><td><strong>Progressive Streaming</strong></td><td>OpenUI (3x perf), Stitch</td><td>🟡 Partial</td></tr>
+<tr><td><strong>Voice Input</strong></td><td>Stitch (Web Speech API)</td><td>❌ Low priority</td></tr>
+<tr><td><strong>URL-as-input</strong></td><td>Stitch, OpenBrand (MIT)</td><td>❌ Medium</td></tr>
+</table>
+
+<h3><i class="ph ph-crown"></i> Strategic Gaps (Only EaseUI)</h3>
+<table>
+<tr><th>#</th><th>Unique Advantage</th><th>Why Defensible</th></tr>
+<tr><td>1</td><td><strong>Properties Inspector + Layer Tree</strong></td><td>Stitch & Efecto = prompt-only. No pixel control.</td></tr>
+<tr><td>2</td><td><strong>W3C Style Dictionary export</strong></td><td>Machine-parseable tokens. Stitch = human-readable only.</td></tr>
+<tr><td>3</td><td><strong>36 Art Director personas</strong></td><td>Competitors have generic themes or none.</td></tr>
+<tr><td>4</td><td><strong>3-phase DS extraction</strong></td><td>Only tool: foundations → components → code.</td></tr>
+<tr><td>5</td><td><strong>Multi-provider AI (8×3)</strong></td><td>Stitch = Gemini-only. Others limited.</td></tr>
+<tr><td>6</td><td><strong>Figma bidirectional</strong></td><td>Import AND export. Others one-way only.</td></tr>
+<tr><td>7</td><td><strong>Cost tracking per variant</strong></td><td>No competitor tracks API cost.</td></tr>
+<tr><td>8</td><td><strong>Design Lint engine</strong></td><td>Built-in quality checks for generated HTML.</td></tr>
+</table>
 
 <!-- SECTION 5: CHANNELS -->
 <h2 id="channels"><i class="ph ph-target"></i> Channel Strategy</h2>
