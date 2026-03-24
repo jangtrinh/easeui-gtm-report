@@ -110,7 +110,7 @@
 
 <div class="stats">
 <div class="stat"><div class="stat-val">$99</div><div class="stat-label">Lifetime Price</div></div>
-<div class="stat"><div class="stat-val">500</div><div class="stat-label">Slots (Limited)</div></div>
+<div class="stat"><div class="stat-val">300</div><div class="stat-label">Slots (Limited)</div></div>
 <div class="stat"><div class="stat-val">172</div><div class="stat-label">Waitlist</div></div>
 <div class="stat"><div class="stat-val">11+</div><div class="stat-label">Countries</div></div>
 <div class="stat"><div class="stat-val">PLG</div><div class="stat-label">GTM Motion</div></div>
@@ -119,7 +119,7 @@
 <div class="classification"><span class="cls-dot"></span> READY TO LAUNCH</div>
 
 <div class="verdict">
-<strong>Summary:</strong> EaseUI is the only AI design tool that generates designs AND extracts production design systems. PLG motion with $99 lifetime deal (500 slots) via Polar.sh. Near-zero cost (BYOK model). Target: $20K-$50K launch revenue.
+<strong>Summary:</strong> EaseUI is the only AI design tool that extracts <strong>W3C Style Dictionary tokens</strong> from AI-generated designs. PLG motion with $99 lifetime deal (300 slots, core features) via Polar.sh. Free tier uses sponsored API (no BYOK friction). ICP: Frontend Devs + Solo Founders.
 </div>
 
 <!-- SECTION 1: EXECUTIVE SUMMARY -->
@@ -129,18 +129,19 @@
 <table>
 <tr><th>Field</th><th>Value</th></tr>
 <tr><td><strong>Product</strong></td><td>AI-powered design engineering platform (prompt → UI → design system → code)</td></tr>
-<tr><td><strong>ICP</strong></td><td>Product Designers, PMs, Frontend Devs at startups & agencies (5-50 employees)</td></tr>
+<tr><td><strong>ICP</strong></td><td><strong>Frontend Devs + Solo Founders</strong> frustrated with v0 inconsistency + manual CSS (narrowed per Lucius critique)</td></tr>
 <tr><td><strong>GTM Motion</strong></td><td>PLG primary + Content-Led secondary</td></tr>
-<tr><td><strong>Pricing</strong></td><td>$99 lifetime (Stage 3) → $19/mo (Stage 4) → $49/seat team (Stage 5)</td></tr>
+<tr><td><strong>Pricing</strong></td><td>$99 lifetime (300 slots, core features) → $19/mo (Stage 4) → $49/seat team (Stage 5)</td></tr>
 <tr><td><strong>Billing</strong></td><td>Polar.sh</td></tr>
 <tr><td><strong>Team</strong></td><td>3 people (Jang, Lucius, Barry)</td></tr>
 <tr><td><strong>Stage</strong></td><td>Stage 3 (MVP) → targeting Stage 4 (PMF)</td></tr>
-<tr><td><strong>Counter-Position</strong></td><td>"The only tool with AI gen + canvas + DS extraction + prod code"</td></tr>
+<tr><td><strong>Counter-Position</strong></td><td>"Only tool with W3C Style Dict tokens + full project export"</td></tr>
 </table>
 
 <div class="why">
-<div class="why-label">ICP — Jobs to Be Done</div>
-<p style="font-size:17px;margin:0">"When I'm <strong>building a product UI</strong>, I'm frustrated that <strong>Figma can't generate code, and v0 can't give me a design system</strong> — Help me <strong>generate, iterate, and ship with design consistency</strong> so I <strong>stop wasting weeks on handoff</strong>."</p>
+<div class="why-label">ICP — Jobs to Be Done (Devs, not Designers)</div>
+<p style="font-size:17px;margin:0">"When I'm <strong>building a product UI</strong>, I'm frustrated that <strong>v0 generates isolated components with no consistency</strong> — Help me <strong>generate a design system + production code</strong> so I <strong>stop hand-coding CSS for every page</strong>."</p>
+<p style="font-size:14px;margin:8px 0 0;color:var(--slate)">⚠️ Narrowed from Designers/PMs per Lucius critique — Designers are locked into Figma visual thinking, EaseUI is a dev tool.</p>
 </div>
 
 <!-- SECTION 2: ASSESSMENT -->
@@ -214,7 +215,7 @@
 <p>What <strong>structurally prevents</strong> each competitor from copying EaseUI:</p>
 <table>
 <tr><th>Incumbent</th><th>Structural Anchor</th><th>Why They CAN'T Copy</th></tr>
-<tr><td><strong>Google Stitch</strong></td><td>Platform lock-in</td><td>HTML/CSS only. React/Next.js DS export conflicts with Google's platform strategy.</td></tr>
+<tr><td><strong>Google Stitch</strong></td><td>Platform lock-in</td><td>Exports JSX/React/Tailwind <strong>snippets</strong> + DESIGN.md (markdown). No W3C tokens, no full project export, not parseable by build tools.</td></tr>
 <tr><td><strong>v0 (Vercel)</strong></td><td>Revenue model</td><td>Credit-based pricing. Canvas + DS extraction would cannibalize per-gen pricing.</td></tr>
 <tr><td><strong>Bolt.new</strong></td><td>Architecture</td><td>WebContainer full-stack tool. Canvas + DS = fundamentally different product.</td></tr>
 <tr><td><strong>SuperDesign</strong></td><td>Process inertia</td><td>IDE-first ideology. Canvas contradicts "stay in VS Code" philosophy.</td></tr>
@@ -292,10 +293,10 @@
 <div class="battlecard">
 <div class="bc-header"><span class="bc-name">vs Google Stitch</span><span class="bc-threat high">🔴 HIGH</span></div>
 <div class="bc-body">
-<div class="bc-half"><div class="bc-label">Where We Win</div><div class="bc-text"><strong>Design system extraction</strong> (W3C Style Dict, TypeScript, CSS Vars) + React/Next.js export. Stitch = HTML/CSS only.</div></div>
-<div class="bc-half"><div class="bc-label">Where They Win</div><div class="bc-text">Google brand, free, Gemini 3 native, Voice Canvas, multi-screen flows, DESIGN.md format.</div></div>
+<div class="bc-half"><div class="bc-label">Where We Win</div><div class="bc-text"><strong>W3C Style Dictionary tokens</strong> (parseable by build tools) + full React project export. Stitch exports JSX/React/Tailwind <em>snippets</em> + DESIGN.md (human-readable markdown, NOT machine-parseable).</div></div>
+<div class="bc-half"><div class="bc-label">Where They Win</div><div class="bc-text">Google brand, free, Gemini 2.5 Pro/Flash, Voice Canvas, DESIGN.md, MCP server (Claude/Cursor/Antigravity), multi-screen flows, infinite canvas.</div></div>
 </div>
-<div class="bc-landmine"><div class="bc-landmine-label"><i class="ph ph-warning"></i> Landmine</div><div class="bc-landmine-text">Google Labs project — could be killed anytime (Stadia, Domains, etc.). No React/Next.js export. Design tokens not extractable.</div></div>
+<div class="bc-landmine"><div class="bc-landmine-label"><i class="ph ph-warning"></i> Landmine</div><div class="bc-landmine-text">Google Labs project — could be killed anytime (Stadia, Domains). DESIGN.md = markdown, not parseable by CSS/JS build tools. Snippets only (no full project structure). Inconsistent outputs. No collaboration.</div></div>
 <div class="bc-footer"><div class="bc-footer-label">Objection Handler</div><div class="bc-footer-text">"Stitch is great for exploring ideas. EaseUI is for when you need to <em>ship</em> — production React code + a design system your team can use."</div></div>
 </div>
 
@@ -471,8 +472,8 @@
 <p class="section-source">Month 1 targets</p>
 
 <h3>Key Metrics</h3>
-<div class="metric-bar"><span class="metric-label">Lifetime Slots Sold</span><div class="metric-track"><div class="metric-fill" style="width:40%"></div></div><span class="metric-val">200/500</span></div>
-<div class="metric-bar"><span class="metric-label">Revenue</span><div class="metric-track"><div class="metric-fill" style="width:40%"></div></div><span class="metric-val">$19.8K</span></div>
+<div class="metric-bar"><span class="metric-label">Lifetime Slots Sold</span><div class="metric-track"><div class="metric-fill" style="width:50%"></div></div><span class="metric-val">150/300</span></div>
+<div class="metric-bar"><span class="metric-label">Revenue</span><div class="metric-track"><div class="metric-fill" style="width:50%"></div></div><span class="metric-val">$14.8K</span></div>
 <div class="metric-bar"><span class="metric-label">Activation Rate</span><div class="metric-track"><div class="metric-fill" style="width:40%"></div></div><span class="metric-val">>40%</span></div>
 <div class="metric-bar"><span class="metric-label">Time-to-Value</span><div class="metric-track"><div class="metric-fill" style="width:100%"></div></div><span class="metric-val"><3 min</span></div>
 <div class="metric-bar"><span class="metric-label">Waitlist Convert</span><div class="metric-track"><div class="metric-fill" style="width:25%"></div></div><span class="metric-val">>25%</span></div>
@@ -497,23 +498,23 @@
 <h4>Costs</h4>
 <div class="data-row"><span class="data-label">Vercel hosting:</span> $0 (free tier)</div>
 <div class="data-row"><span class="data-label">Supabase:</span> $0 (free tier)</div>
-<div class="data-row"><span class="data-label">Gemini API:</span> ~$0 (users bring own keys)</div>
+<div class="data-row"><span class="data-label">Gemini API (free tier):</span> ~$1.50/user/mo (EaseUI sponsors 3 gen/day)</div>
 <div class="data-row"><span class="data-label">Domain:</span> ~$12/year</div>
-<div class="data-row"><span class="data-label">Monthly burn:</span> <strong>~$1</strong></div>
+<div class="data-row"><span class="data-label">Monthly burn:</span> <strong>~$150</strong> (100 free users × $1.50)</div>
 </div>
 <div class="compare-col">
 <h4>Revenue Scenarios</h4>
-<div class="data-row"><span class="data-label">Conservative:</span> 200 slots = <strong>$19,800</strong></div>
-<div class="data-row"><span class="data-label">Target:</span> 350 slots = <strong>$34,650</strong></div>
-<div class="data-row"><span class="data-label">Stretch:</span> 500 slots = <strong>$49,500</strong></div>
-<div class="data-row"><span class="data-label">Gross Margin:</span> <strong>~90%</strong> (BYOK)</div>
+<div class="data-row"><span class="data-label">Conservative:</span> 150 slots = <strong>$14,850</strong></div>
+<div class="data-row"><span class="data-label">Target:</span> 250 slots = <strong>$24,750</strong></div>
+<div class="data-row"><span class="data-label">Stretch:</span> 300 slots = <strong>$29,700</strong></div>
+<div class="data-row"><span class="data-label">Gross Margin:</span> <strong>~85%</strong> (sponsored free tier)</div>
 <div class="data-row"><span class="data-label">LTV:CAC:</span> <strong>∞</strong> (organic)</div>
 </div>
 </div>
 
 <h3>Pricing Roadmap</h3>
 <div class="timeline">
-<div class="tl-item done"><div class="tl-label">Stage 3 (Now)</div><div class="tl-text"><strong>$99 lifetime</strong> — maximize adoption, build base (500 slots via Polar.sh)</div></div>
+<div class="tl-item done"><div class="tl-label">Stage 3 (Now)</div><div class="tl-text"><strong>$99 lifetime</strong> — 300 slots, "core features forever" via Polar.sh. Free tier: sponsored API.</div></div>
 <div class="tl-item"><div class="tl-label">Stage 4 (PMF)</div><div class="tl-text"><strong>+ $19/mo subscription</strong> — recurring revenue after slots sell out</div></div>
 <div class="tl-item"><div class="tl-label">Stage 5 (Scale)</div><div class="tl-text"><strong>+ $49/seat team tier</strong> — B2B expansion</div></div>
 </div>
@@ -524,11 +525,12 @@
 
 <table>
 <tr><th>Risk</th><th>Likelihood</th><th>Mitigation</th></tr>
-<tr><td><strong>Google Stitch captures market</strong></td><td>🔴 High</td><td>Stitch can't export React/DS. Focus on production output moat.</td></tr>
-<tr><td><strong>Figma adds native AI</strong></td><td>🔴 High</td><td>Already added — but bolted-on. Native advantage holds.</td></tr>
+<tr><td><strong>Google Stitch captures market</strong></td><td>🔴 High</td><td>Stitch exports snippets + DESIGN.md (not parseable by build tools). EaseUI moat = W3C Style Dict tokens.</td></tr>
+<tr><td><strong>BYOK friction kills PLG</strong></td><td>🟡 Medium</td><td><strong>Fixed:</strong> Free tier uses sponsored API (3 gen/day). BYOK only for paid tier.</td></tr>
+<tr><td><strong>Figma adds native AI</strong></td><td>🔴 High</td><td>Already added — but bolted-on. No code export. Native advantage holds.</td></tr>
 <tr><td>Efecto/SuperDesign catch up</td><td>🟡 Medium</td><td>Ship fast. 6+ month head start. Build user base.</td></tr>
 <tr><td>No recurring revenue</td><td>🟡 Medium</td><td>Transition to $19/mo after lifetime. $49/seat for teams.</td></tr>
-<tr><td>Low activation rate</td><td>🟡 Medium</td><td>A/B test onboarding. Target: 2 clicks to first design.</td></tr>
+<tr><td>LTD users = support debt</td><td>🟡 Medium</td><td>300 slots (not 500). Scope: "core features forever". New premium features gated.</td></tr>
 <tr><td>Solo founder burnout</td><td>🔴 High</td><td>Automate everything. Team of 3. 4-phase roadmap.</td></tr>
 </table>
 
@@ -546,11 +548,11 @@
 </div>
 <div class="sprint-task">
 <div class="sprint-pri p0">P0</div>
-<div class="sprint-info"><div class="sprint-name">Set up lifetime deal page</div><div class="sprint-meta">Jang · 2h · Polar.sh, 500 slots, countdown</div></div>
+<div class="sprint-info"><div class="sprint-name">Set up lifetime deal page</div><div class="sprint-meta">Jang · 2h · Polar.sh, 300 slots, "core features", countdown</div></div>
 </div>
 <div class="sprint-task">
 <div class="sprint-pri p0">P0</div>
-<div class="sprint-info"><div class="sprint-name">Write comparison blog post</div><div class="sprint-meta">Jang · 4h · v0 vs Bolt vs Stitch vs EaseUI</div></div>
+<div class="sprint-info"><div class="sprint-name">Write comparison blog post</div><div class="sprint-meta">Jang · 4h · v0 vs Bolt vs Stitch vs EaseUI — target devs, not designers</div></div>
 </div>
 <div class="sprint-task">
 <div class="sprint-pri p1">P1</div>
