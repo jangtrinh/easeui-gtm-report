@@ -215,7 +215,7 @@
 <p>What <strong>structurally prevents</strong> each competitor from copying EaseUI:</p>
 <table>
 <tr><th>Incumbent</th><th>Structural Anchor</th><th>Why They CAN'T Copy</th></tr>
-<tr><td><strong>Google Stitch</strong></td><td>Platform lock-in</td><td>Exports JSX/React/Tailwind <strong>snippets</strong> + DESIGN.md (markdown). No W3C tokens, no full project export, not parseable by build tools.</td></tr>
+<tr><td><strong>Google Stitch</strong></td><td>Prompt-only architecture</td><td>8 exports (Jules React, Dev Prompt, MCP, Figma, .zip, AI Studio, Brief, Prototypes) + 3 AI models. BUT: <strong>prompt-only editing</strong> (no Properties Inspector, no Layer Tree). Snippets only (no full project). DESIGN.md = human-readable (not W3C). Gemini-only.</td></tr>
 <tr><td><strong>v0 (Vercel)</strong></td><td>Revenue model</td><td>Credit-based pricing. Canvas + DS extraction would cannibalize per-gen pricing.</td></tr>
 <tr><td><strong>Bolt.new</strong></td><td>Architecture</td><td>WebContainer full-stack tool. Canvas + DS = fundamentally different product.</td></tr>
 <tr><td><strong>SuperDesign</strong></td><td>Process inertia</td><td>IDE-first ideology. Canvas contradicts "stay in VS Code" philosophy.</td></tr>
@@ -284,7 +284,7 @@
 </div>
 </div>
 
-<div class="insight"><strong>Key takeaway:</strong> EaseUI is the ONLY tool with «DS Extraction» — the ability to extract production-ready design system tokens (W3C Style Dictionary, TypeScript, CSS Variables) from generated designs. This is the structural moat.</div>
+<div class="insight"><strong>Key takeaway:</strong> EaseUI = “AI designs WITH you” (workshop model — learn, grow, STAY). Stitch = “AI designs FOR you” (vending machine — insert prompt, get design, walk away). EaseUI’s hybrid model (prompt + Properties Inspector + Layer Tree) + W3C export is the structural moat. 14 features Stitch cannot match.</div>
 
 <!-- SECTION 4: BATTLECARDS -->
 <h2 id="battlecards"><i class="ph ph-sword"></i> Competitive Battlecards</h2>
@@ -293,11 +293,11 @@
 <div class="battlecard">
 <div class="bc-header"><span class="bc-name">vs Google Stitch</span><span class="bc-threat high">🔴 HIGH</span></div>
 <div class="bc-body">
-<div class="bc-half"><div class="bc-label">Where We Win</div><div class="bc-text"><strong>W3C Style Dictionary tokens</strong> (parseable by build tools) + full React project export. Stitch exports JSX/React/Tailwind <em>snippets</em> + DESIGN.md (human-readable markdown, NOT machine-parseable).</div></div>
-<div class="bc-half"><div class="bc-label">Where They Win</div><div class="bc-text">Google brand, free, Gemini 2.5 Pro/Flash, Voice Canvas, DESIGN.md, MCP server (Claude/Cursor/Antigravity), multi-screen flows, infinite canvas.</div></div>
+<div class="bc-half"><div class="bc-label">Where We Win</div><div class="bc-text"><strong>Hybrid model</strong> (prompt + Properties Inspector + Layer Tree) vs Stitch's prompt-only. <strong>W3C Style Dict tokens</strong> (machine-parseable) vs DESIGN.md (human-readable). Full React/Next.js/Flutter <em>project</em> export vs code snippets. 8 models × 3 providers vs Gemini-only. 36 Art Director personas vs generic themes. Figma <em>bidirectional</em> vs one-way. Design lint, cost tracking, Taste Mode.</div></div>
+<div class="bc-half"><div class="bc-label">Where They Win</div><div class="bc-text">Google brand, free, 8 exports (Jules → React, Dev Prompt, MCP server, .zip, Figma, AI Studio, Project Brief, Instant Prototypes), 3 AI models (Flash/Pro/Nano Banana Pro), Voice Canvas, multi-screen scope expansion, "Imagine a New Screen" in prototyping, URL extraction, AI auto-connection, agent log transparency.</div></div>
 </div>
-<div class="bc-landmine"><div class="bc-landmine-label"><i class="ph ph-warning"></i> Landmine</div><div class="bc-landmine-text">Google Labs project — could be killed anytime (Stadia, Domains). DESIGN.md = markdown, not parseable by CSS/JS build tools. Snippets only (no full project structure). Inconsistent outputs. No collaboration.</div></div>
-<div class="bc-footer"><div class="bc-footer-label">Objection Handler</div><div class="bc-footer-text">"Stitch is great for exploring ideas. EaseUI is for when you need to <em>ship</em> — production React code + a design system your team can use."</div></div>
+<div class="bc-landmine"><div class="bc-landmine-label"><i class="ph ph-warning"></i> Landmine</div><div class="bc-landmine-text">Google Labs = experimental (could be killed like Stadia/Domains). Prompt-only = no precision editing. Inconsistent outputs (same prompt → different results). No collaboration. No layer tree. No design lint. DESIGN.md not parseable by CSS/JS build tools. Users learn nothing (vending machine effect — easy to leave).</div></div>
+<div class="bc-footer"><div class="bc-footer-label">Objection Handler</div><div class="bc-footer-text">"Stitch designs <em>for</em> you — great for quick mockups. EaseUI designs <em>with</em> you — pixel-level control, W3C design tokens, and production React/Next.js projects your team can actually use."</div></div>
 </div>
 
 <div class="battlecard">
@@ -525,7 +525,7 @@
 
 <table>
 <tr><th>Risk</th><th>Likelihood</th><th>Mitigation</th></tr>
-<tr><td><strong>Google Stitch captures market</strong></td><td>🔴 High</td><td>Stitch exports snippets + DESIGN.md (not parseable by build tools). EaseUI moat = W3C Style Dict tokens.</td></tr>
+<tr><td><strong>Google Stitch captures market</strong></td><td>🔴 High</td><td>Stitch has 8 exports (Jules React, Dev Prompt, MCP) — but is prompt-only (no precision editing). EaseUI = hybrid model (prompt + inspector + layer tree) + W3C tokens. Stitch = vending machine (easy to leave), EaseUI = workshop (hard to leave).</td></tr>
 <tr><td><strong>BYOK friction kills PLG</strong></td><td>🟡 Medium</td><td><strong>Fixed:</strong> Free tier uses sponsored API (3 gen/day). BYOK only for paid tier.</td></tr>
 <tr><td><strong>Figma adds native AI</strong></td><td>🔴 High</td><td>Already added — but bolted-on. No code export. Native advantage holds.</td></tr>
 <tr><td>Efecto/SuperDesign catch up</td><td>🟡 Medium</td><td>Ship fast. 6+ month head start. Build user base.</td></tr>
